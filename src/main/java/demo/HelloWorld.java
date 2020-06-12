@@ -43,6 +43,19 @@ public class HelloWorld {
             return "Hello init()";
         });
 
+        post("/hello2", (request, response) -> {
+
+            String xmlReq = request.body();
+
+            String newXml = xmlReq.replace("</xml>","");
+
+            newXml = newXml + "<code>200</code>" + "\n</xml>";
+
+            System.out.println("xmlReq== "+xmlReq);
+            System.out.println("newXml== "+newXml);
+            return newXml;
+        });
+
 
         before("/*", (q, a) -> {
 
